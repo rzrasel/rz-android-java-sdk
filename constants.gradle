@@ -7,9 +7,13 @@ project.ext {
     junitVersion = "4.13"
 
     kotlinVersion = '1.4.10'
-    gradleVersion = "3.5.2"
-    buildTools = "29.0.2"
+//    gradleVersion = "3.5.2"
+    gradleVersion = "4.1.2"
+//    buildTools = "29.0.2"
+    buildTools = "30.0.3"
     minSdk = 15
-    compileSdk = 29
-    targetSdk = 29
+//    compileSdk = 29
+    compileSdk = 30
+//    targetSdk = 29
+    targetSdk = 30
 }
