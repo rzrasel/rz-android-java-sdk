@@ -5,6 +5,8 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+//    compileSdkVersion compileSdk
+//    buildToolsVersion buildTools
 
     defaultConfig {
         applicationId "com.rzandroid.appusagesexample"
@@ -14,6 +16,20 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+//        applicationId "com.rzandroid.appusagesexample"
+//        minSdkVersion minSdk
+//        targetSdkVersion targetSdk
+//        versionCode 1
+//        versionName "0.1"
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        multiDexEnabled true
+
+        def date = new Date()
+        def formattedDate = date.format('yyyy-MM-dd')
+        def apkName = "$rootProject.APP_NAME" + "-" + formattedDate + '-v' + defaultConfig.versionCode
+
+        setProperty("archivesBaseName", "$apkName")
     }
 
     buildTypes {
@@ -26,16 +42,41 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    lintOptions {
+        abortOnError false
+    }
+
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi', 'armeabi-v7a', 'x86'
+            universalApk true
+        }
+    }
 }
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation 'com.google.android.material:material:1.3.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+//    testImplementation 'junit:junit:4.+'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':rzandroid')
+    implementation 'com.facebook.fresco:fresco:2.1.0'
+    implementation "androidx.appcompat:appcompat:${project.ext.androidxVersion}"
+    implementation "androidx.annotation:annotation:${project.ext.androidxVersion}"
     implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'androidx.annotation', module: 'annotation'
+    })
+    testImplementation "junit:junit:$junitVersion"
+//    implementation 'com.android.support:animated-vector-drawable:28.0.0'
+//    implementation 'com.android.support:design:28.0.0'
 }
 
 // AppUsagesExample application gradle file
