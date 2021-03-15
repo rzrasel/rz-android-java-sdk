@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/rzandroid" />
+            <option value="$PROJECT_DIR$/rzandroid-core" />
             <option value="$PROJECT_DIR$/usages" />
             <option value="$PROJECT_DIR$/usages/AppUsagesExample" />
           </set>

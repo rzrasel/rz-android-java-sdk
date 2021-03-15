@@ -1,5 +1,7 @@
-include ':rzandroid'//include ':appusagesexample'
+include ':rzandroid-core'
+include ':rzandroid'
 //Usages
+//include ':appusagesexample'
 include ':usages:AppUsagesExample'
 rootProject.name = "App Usages Example"
 
